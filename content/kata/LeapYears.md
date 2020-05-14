@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Leap Years"
 draft: false
 date: "2017-10-18T19:07:00"
@@ -26,11 +26,12 @@ Acceptance Criteria:
 
 ###########################################################################################
                                         Code Starts Here
-###########################################################################################
+########################################################################################### 
 
 import java.util.*;
 import java.util.stream.Stream;
 import java.io.*;
+import java.math.BigInteger;
 
 class LeapYears{
     
@@ -41,7 +42,11 @@ class LeapYears{
         Iterator<String> inputLines = inputs.iterator();
 
         while (inputLines.hasNext()) {
-            int year = Integer.parseInt(inputLines.next());
+            BigInteger year = new BigInteger(inputLines.next());
+            if(year.compareTo(BigInteger.ZERO)==-1){
+                bufferedReader.close();
+                throw new Exception("Year cannot be negative");
+            }
             String leapYearPrint = " is a Leap Year.";
             if(!isLeapYear(year)){
                 leapYearPrint = " is not a Leap Year.";
@@ -52,12 +57,12 @@ class LeapYears{
         bufferedReader.close();
     }
 
-    static boolean isLeapYear(int year) {        
-        if(year % 4!=0){
+    static boolean isLeapYear(BigInteger year) {        
+        if(year.remainder(new BigInteger("4"))!=BigInteger.ZERO){
             return false;
         }
 
-        if(year%100==0 && year%400!=0){
+        if(year.remainder(new BigInteger("100"))==BigInteger.ZERO &&  year.remainder(new BigInteger("400"))!=BigInteger.ZERO){
             return false;
         }
 
