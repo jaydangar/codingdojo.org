@@ -29,23 +29,38 @@ Acceptance Criteria:
 ###########################################################################################
 
 import java.util.*;
+import java.util.stream.Stream;
 import java.io.*;
 
-class LeapYearCheck{
+class LeapYears{
     
-    public static void main(String[] args){
+    //  added test file...
+    public static void main(String[] args) throws Exception{
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(args[0])));
         Stream<String> inputs = bufferedReader.lines();
         Iterator<String> inputLines = inputs.iterator();
 
         while (inputLines.hasNext()) {
-            
+            int year = Integer.parseInt(inputLines.next());
+            String leapYearPrint = " is a Leap Year.";
+            if(!isLeapYear(year)){
+                leapYearPrint = " is not a Leap Year.";
+            }
+            System.out.println("Year " + year + leapYearPrint);
         }
 
         bufferedReader.close();
     }
 
-    static boolean isLeapYear(BigInteger year) {        
-        
+    static boolean isLeapYear(int year) {        
+        if(year % 4!=0){
+            return false;
+        }
+
+        if(year%100==0 && year%400!=0){
+            return false;
+        }
+
+        return true;
     }
 }
