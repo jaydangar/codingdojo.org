@@ -24,3 +24,28 @@ Acceptance Criteria:
 3.	All years divisible by 4 but not by 100 ARE leap years (e.g., 2008, 2012, 2016),
 4.	All years not divisible by 4 are NOT leap years (e.g. 2017, 2018, 2019).
 
+###########################################################################################
+                                        Code Starts Here
+###########################################################################################
+
+import java.util.*;
+import java.io.*;
+
+class LeapYearCheck{
+    
+    public static void main(String[] args){
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(args[0])));
+        Stream<String> inputs = bufferedReader.lines();
+        Iterator<String> inputLines = inputs.iterator();
+
+        while (inputLines.hasNext()) {
+            
+        }
+
+        bufferedReader.close();
+    }
+
+    static boolean isLeapYear(BigInteger year) {        
+        
+    }
+}
